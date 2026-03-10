@@ -19,9 +19,9 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /app
 
 COPY --from=builder /app/server .
-COPY .env.example .env.example
-
-EXPOSE 8888
+COPY .env .env
 
 CMD ["./server"]
-#end
+
+# start name:expose type:add
+EXPOSE 8080

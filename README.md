@@ -4,6 +4,23 @@ microboiler
 
 Project boilerplate
 
+Run
+---
+
+```bash
+task run
+# or
+docker compose up; docker-compose rm --force --stop --volumes
+```
+
+Build
+-----
+
+```bash
+task build
+# binary: bin/server
+```
+
 [//]: # (start name:project type:add)
 
 rest_server
@@ -25,19 +42,6 @@ internal/
   usecase/           — business logic
 pkg/
   httpserver/        — http server + interceptors
-```
-
-### Run
-
-```bash
-task run
-```
-
-### Build
-
-```bash
-task build
-# binary: bin/server
 ```
 
 ### Test / Lint
