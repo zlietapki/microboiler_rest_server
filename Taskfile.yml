@@ -43,6 +43,9 @@ tasks:
       - tools
     cmds:
       - PATH=$BIN_PATH go generate ./...
+      # start name:generate_cmds type:merge
+      - PATH=$BIN_PATH oapi-codegen --config=api/oapi-codegen.yml api/swagger.yml
+      # start name:post_generate_cmds
 
   test:
     desc: Run tests
