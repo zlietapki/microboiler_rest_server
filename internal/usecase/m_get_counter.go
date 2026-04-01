@@ -1,7 +1,11 @@
 package usecase
 
-import "github.com/zlietapki/gena/internal/domain"
+import (
+	"context"
 
-func (uc *Usecase) GetCounter() (domain.Counter, error) {
+	"github.com/zlietapki/gena/internal/domain"
+)
+
+func (uc *Usecase) GetCounter(_ context.Context) (domain.Counter, error) {
 	return uc.counterRepo.GetNextCounter()
 }

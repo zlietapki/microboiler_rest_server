@@ -12,7 +12,7 @@ import (
 	"github.com/zlietapki/gena/internal/map_repo"
 	"github.com/zlietapki/gena/internal/rest_handler"
 	"github.com/zlietapki/gena/internal/usecase"
-	"github.com/zlietapki/gena/pkg/httpserver"
+	"github.com/zlietapki/gena/pkg/http_echo_server"
 )
 
 // start name:main
@@ -32,9 +32,9 @@ func main() {
 	//start name:after_usecase type:add
 	restHandler := rest_handler.New(uc)
 
-	httpServer := httpserver.New(cfg.HTTPListen)
+	httpServer := http_echo_server.New(cfg.HTTPListen)
 
-	api := httpServer.Srv.Group("/api")
+	api := httpServer.Echo.Group("/api")
 	api.GET("/counter", restHandler.GetCounter)
 
 	httpErrCh := httpServer.Start()

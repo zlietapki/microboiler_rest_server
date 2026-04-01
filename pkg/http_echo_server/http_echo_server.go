@@ -1,4 +1,4 @@
-package httpserver
+package http_echo_server
 
 import (
 	"net/http"
@@ -8,7 +8,7 @@ import (
 )
 
 type Server struct {
-	Srv    *echo.Echo
+	Echo   *echo.Echo
 	listen string
 }
 
@@ -18,7 +18,7 @@ func New(listen string, middlewares ...func(http.Handler) http.Handler) Server {
 	e.Use(middleware.Recover())       // recover panics as errors for proper error handling
 
 	return Server{
-		Srv:    e,
+		Echo:   e,
 		listen: listen,
 	}
 }
@@ -26,7 +26,7 @@ func New(listen string, middlewares ...func(http.Handler) http.Handler) Server {
 func (s *Server) Start() chan error {
 	errCh := make(chan error)
 	go func() {
-		errCh <- s.Srv.Start(s.listen)
+		errCh <- s.Echo.Start(s.listen)
 		close(errCh)
 	}()
 	return errCh

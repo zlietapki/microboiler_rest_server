@@ -7,7 +7,7 @@ import (
 )
 
 func (h *UserHandler) GetCounter(c *echo.Context) error {
-	counter, err := h.uc.GetCounter()
+	counter, err := h.uc.GetCounter(c.Request().Context())
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
